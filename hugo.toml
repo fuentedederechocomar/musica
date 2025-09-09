@@ -9,19 +9,19 @@ title = 'inicio'
     [menu.main.params]
       type = "search"
   [[menu.main]]
-    identifier = "Ley"
-    name = "Ley"
-    url = "/ley/"
+    identifier = "Géneros"
+    name = "Géneros"
+    url = "/generos/"
     weight = 1
   [[menu.main]]
-    identifier = "Jurisprudencia"
-    name = "Jurisprudencia"
-    url = "/jurisprudencia/"
+    identifier = "Compositores"
+    name = "Compositores"
+    url = "/compositores/"
     weight = 2
   [[menu.main]]
-    identifier = "Doctrina"
-    name = "Doctrina"
-    url = "/doctrina/"
+    identifier = "Instrumentos"
+    name = "Instrumentos"
+    url = "/instrumentos/"
     weight = 3
   [[menu.main]]
     identifier = "Novedades"
@@ -29,28 +29,24 @@ title = 'inicio'
     url = "/novedades/"
     weight = 4
   [[menu.main]]
-   identifier = "Categorias"
-   name = "Categorías"
-   pageRef = "categories"
-   weight = 5  
-  [[menu.main]]
     identifier = "Etiquetas"
     name = "Etiquetas"
     pageRef = "tags"
-    weight = 6
+    weight = 5
 
 [params]
-  description = "Fuente De Derecho"
-  pwa = false # Agrego para testear evitar mensaje emergente 27/8/2025
+  description = "Un sitio sobre música"
+  pwa = false
 
   [params.search]
     enable = true
 
 [taxonomies]
-  category = "categories"
+  genero = "generos"
+  compositor = "compositores"
+  instrumento = "instrumentos"
   tag = "tags"
-  author = "authors"
 
 [module]
   [[module.imports]]
-    path = "github.com/imfing/hextra" 
+    path = "github.com/imfing/hextra"
