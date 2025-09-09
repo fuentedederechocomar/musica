@@ -1,0 +1,26 @@
+{{ define "main" }}
+  {{- partial "head" . -}}
+  <div class="hxtra-main">
+    <div class="hxtra-page-header">
+      <h1 class="hxtra-title">{{ .Title }}</h1>
+    </div>
+    <div class="hxtra-content">
+      {{ if eq .Kind "term" }}
+        {{ range .Pages }}
+          <div class="hxtra-post-item">
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          </div>
+        {{ end }}
+      {{ else if eq .Kind "taxonomy" }}
+        <ul>
+          {{ range .Data.Terms.ByCount }}
+            <li>
+              <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> ({{ .Count }})
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </div>
+    {{- partial "footer" . -}}
+  </div>
+{{ end }}
