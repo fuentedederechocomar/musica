@@ -4,7 +4,13 @@
       <h1 class="hxtra-title">{{ .Title }}</h1>
     </div>
     <div class="hxtra-content">
-      {{- if .IsTaxonomy -}}
+      {{- if .IsSection -}}
+        {{- range .Pages -}}
+          <div class="hxtra-post-item">
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          </div>
+        {{- end -}}
+      {{- else if .IsTaxonomy -}}
         {{- if eq .Kind "taxonomy" -}}
           <ul>
             {{- range .Data.Terms.ByCount -}}
@@ -19,12 +25,6 @@
               <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
             {{- end -}}
           </ul>
-        {{- end -}}
-      {{- else if .IsSection -}}
-        {{- range .Pages -}}
-          <div class="hxtra-post-item">
-            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
-          </div>
         {{- end -}}
       {{- end -}}
     </div>
