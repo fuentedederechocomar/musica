@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ partial "head" . }}
+  <div class="hxtra-main">
+    <div class="hxtra-page-header">
+      <h1 class="hxtra-title">{{ .Title }}</h1>
+    </div>
+    <div class="hxtra-content">
+      <p>
+        {{ with .Params.genero }}
+          **Género:** {{ range . }}
+            <a href="{{ "generos/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+          {{ end }}
+        {{ end }}
+      </p>
+      {{ .Content }}
+    </div>
+    {{ partial "footer" . }}
+  </div>
+{{ end }}
