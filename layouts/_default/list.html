@@ -4,28 +4,28 @@
       <h1 class="hxtra-title">{{ .Title }}</h1>
     </div>
     <div class="hxtra-content">
-      {{- if .IsHome -}}
-      {{- range .Site.Menus.main -}}
+      {{- if .IsTaxonomy -}}
+        {{- if eq .Kind "taxonomy" -}}
+          <ul>
+            {{- range .Data.Terms.ByCount -}}
+              <li>
+                <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> ({{ .Count }})
+              </li>
+            {{- end -}}
+          </ul>
+        {{- else if eq .Kind "term" -}}
+          <ul>
+            {{- range .Pages -}}
+              <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{- end -}}
+          </ul>
+        {{- end -}}
       {{- else if .IsSection -}}
-      {{- range .Pages.ByDate.Reverse -}}
-      {{- partial "hxtra/docs/section-summary" . -}}
-      {{- end -}}
-      {{- else if .IsTaxonomy -}}
-      {{- if eq .Kind "taxonomy" -}}
-      <ul>
-        {{- range .Data.Terms.ByCount -}}
-        <li>
-          <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a> ({{ .Count }})
-        </li>
-        {{- end -}}
-      </ul>
-      {{- else if eq .Kind "term" -}}
-      <ul>
         {{- range .Pages -}}
-        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          <div class="hxtra-post-item">
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+          </div>
         {{- end -}}
-      </ul>
-      {{- end -}}
       {{- end -}}
     </div>
   </div>
